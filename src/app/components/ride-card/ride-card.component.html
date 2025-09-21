@@ -1,0 +1,58 @@
+<div class="ride-card">
+  <div class="ride-header">
+    <div class="vehicle-info">
+      <span class="vehicle-icon">
+        {{ ride.vehicleType === 'Car' ? '🚗' : '🏍️' }}
+      </span>
+      <div>
+        <div class="vehicle-type">{{ ride.vehicleType }}</div>
+        <div class="vehicle-number">{{ ride.vehicleNo }}</div>
+      </div>
+    </div>
+    <div class="time">{{ ride.time }}</div>
+  </div>
+  
+  <div class="ride-details">
+    <div class="route">
+      <div class="route-item">
+        <span class="route-icon">📍</span>
+        <div>
+          <div class="route-label">Pickup</div>
+          <div class="route-location">{{ ride.pickupPoint }}</div>
+        </div>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="route-item">
+        <span class="route-icon">🎯</span>
+        <div>
+          <div class="route-label">Destination</div>
+          <div class="route-location">{{ ride.destination }}</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ride-info">
+      <div class="info-item">
+        <span class="info-label">Driver:</span>
+        <span class="info-value">{{ ride.employeeId }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Available Seats:</span>
+        <span class="info-value seats" [class.low-seats]="ride.vacantSeats <= 1">
+          {{ ride.vacantSeats }}
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="ride-actions" *ngIf="showBookButton">
+    <button 
+      class="book-btn" 
+      (click)="onBookRide()" 
+      [disabled]="ride.vacantSeats === 0"
+    >
+      <span *ngIf="ride.vacantSeats > 0">Book Ride</span>
+      <span *ngIf="ride.vacantSeats === 0">No Seats Available</span>
+    </button>
+  </div>
+</div>

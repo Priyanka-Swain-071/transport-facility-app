@@ -1,0 +1,152 @@
+.ride-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ride-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.ride-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.vehicle-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vehicle-icon {
+  font-size: 2rem;
+}
+
+.vehicle-type {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.vehicle-number {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.time {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.ride-details {
+  margin-bottom: 1rem;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.route-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.route-icon {
+  font-size: 1.2rem;
+}
+
+.route-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.route-location {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.route-arrow {
+  font-size: 1.2rem;
+  color: #95a5a6;
+  font-weight: bold;
+}
+
+.ride-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.info-value {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.info-value.seats {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.info-value.seats.low-seats {
+  color: #e74c3c;
+}
+
+.ride-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.book-btn {
+  width: 100%;
+  background-color: #27ae60;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-btn:hover:not(:disabled) {
+  background-color: #229954;
+}
+
+.book-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}

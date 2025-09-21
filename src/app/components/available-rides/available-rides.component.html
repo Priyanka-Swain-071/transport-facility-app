@@ -1,0 +1,59 @@
+<div class="available-rides-container">
+  <div class="header">
+    <h2>Available Rides</h2>
+    <div class="filters">
+      <div class="filter-group">
+        <label for="currentTime">Current Time:</label>
+        <input 
+          type="time" 
+          id="currentTime"
+          [(ngModel)]="currentTime"
+          (ngModelChange)="updateAvailableRides()"
+        >
+      </div>
+      <div class="filter-group">
+        <label for="vehicleFilter">Vehicle Type:</label>
+        <select 
+          id="vehicleFilter"
+          [(ngModel)]="vehicleTypeFilter"
+          (ngModelChange)="updateAvailableRides()"
+        >
+          <option value="">All Vehicles</option>
+          <option value="Car">Car</option>
+          <option value="Bike">Bike</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employee ID Input for Booking -->
+  <div class="booking-section">
+    <div class="form-group">
+      <label for="employeeId">Your Employee ID (required for booking):</label>
+      <input 
+        type="text" 
+        id="employeeId"
+        [(ngModel)]="employeeId"
+        placeholder="Enter your employee ID"
+        class="employee-input"
+      >
+    </div>
+  </div>
+
+  <!-- Available Rides -->
+  <div class="rides-grid" *ngIf="availableRides.length > 0">
+    <app-ride-card
+      *ngFor="let ride of availableRides"
+      [ride]="ride"
+      [showBookButton]="true"
+      (bookRide)="onBookRide($event)"
+    ></app-ride-card>
+  </div>
+
+  <!-- No Rides Available -->
+  <div class="no-rides" *ngIf="availableRides.length === 0">
+    <div class="no-rides-icon">🚫</div>
+    <h3>No Available Rides</h3>
+    <p>No rides match your current filters. Try adjusting the time or vehicle type.</p>
+  </div>
+</div>

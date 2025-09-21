@@ -1,0 +1,112 @@
+<div class="add-ride-container">
+  <div class="card">
+    <h2>Add New Ride</h2>
+    <form [formGroup]="rideForm" (ngSubmit)="onSubmit()" class="ride-form">
+      <div class="form-group">
+        <label for="employeeId">Employee ID *</label>
+        <input 
+          type="text" 
+          id="employeeId"
+          formControlName="employeeId"
+          placeholder="Enter your employee ID"
+          [class.error]="isFieldInvalid('employeeId')"
+        >
+        <div *ngIf="isFieldInvalid('employeeId')" class="error-message">
+          Employee ID is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleType">Vehicle Type *</label>
+        <select 
+          id="vehicleType"
+          formControlName="vehicleType"
+          [class.error]="isFieldInvalid('vehicleType')"
+        >
+          <option value="">Select vehicle type</option>
+          <option value="Bike">Bike</option>
+          <option value="Car">Car</option>
+        </select>
+        <div *ngIf="isFieldInvalid('vehicleType')" class="error-message">
+          Vehicle type is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleNo">Vehicle Number *</label>
+        <input 
+          type="text" 
+          id="vehicleNo"
+          formControlName="vehicleNo"
+          placeholder="Enter vehicle number"
+          [class.error]="isFieldInvalid('vehicleNo')"
+        >
+        <div *ngIf="isFieldInvalid('vehicleNo')" class="error-message">
+          Vehicle number is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vacantSeats">Vacant Seats *</label>
+        <input 
+          type="number" 
+          id="vacantSeats"
+          formControlName="vacantSeats"
+          placeholder="Enter number of vacant seats"
+          min="1"
+          [class.error]="isFieldInvalid('vacantSeats')"
+        >
+        <div *ngIf="isFieldInvalid('vacantSeats')" class="error-message">
+          <span *ngIf="rideForm.get('vacantSeats')?.errors?.required">Vacant seats is required</span>
+          <span *ngIf="rideForm.get('vacantSeats')?.errors?.min">Minimum 1 seat required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="time">Time *</label>
+        <input 
+          type="time" 
+          id="time"
+          formControlName="time"
+          [class.error]="isFieldInvalid('time')"
+        >
+        <div *ngIf="isFieldInvalid('time')" class="error-message">
+          Time is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pickupPoint">Pickup Point *</label>
+        <input 
+          type="text" 
+          id="pickupPoint"
+          formControlName="pickupPoint"
+          placeholder="Enter pickup location"
+          [class.error]="isFieldInvalid('pickupPoint')"
+        >
+        <div *ngIf="isFieldInvalid('pickupPoint')" class="error-message">
+          Pickup point is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="destination">Destination *</label>
+        <input 
+          type="text" 
+          id="destination"
+          formControlName="destination"
+          placeholder="Enter destination"
+          [class.error]="isFieldInvalid('destination')"
+        >
+        <div *ngIf="isFieldInvalid('destination')" class="error-message">
+          Destination is required
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="rideForm.invalid || isSubmitting" class="submit-btn">
+        <span *ngIf="isSubmitting">Adding Ride...</span>
+        <span *ngIf="!isSubmitting">Add Ride</span>
+      </button>
+    </form>
+  </div>
+</div>
